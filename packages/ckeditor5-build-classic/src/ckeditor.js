@@ -30,6 +30,10 @@ import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformation';
 
+import SimpleUploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter';
+import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+
 export default class ClassicEditor extends ClassicEditorBase {}
 
 // Plugins to include in the build.
@@ -56,7 +60,10 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
-	TextTransformation
+	TextTransformation,
+	Alignment,
+	SimpleUploadAdapter,
+	FontColor
 ];
 
 // Editor configuration.
@@ -67,17 +74,19 @@ ClassicEditor.defaultConfig = {
 			'|',
 			'bold',
 			'italic',
+			'fontColor',
 			'link',
 			'bulletedList',
 			'numberedList',
 			'|',
 			'indent',
 			'outdent',
+			'alignment',
 			'|',
 			'imageUpload',
 			'blockQuote',
 			'insertTable',
-			'mediaEmbed',
+			// 'mediaEmbed',
 			'undo',
 			'redo'
 		]
@@ -95,6 +104,78 @@ ClassicEditor.defaultConfig = {
 			'tableColumn',
 			'tableRow',
 			'mergeTableCells'
+		]
+	},
+	simpleUpload:{
+		uploadUrl:'/dash/media'
+	},
+	fontColor:{
+		colors: [
+			{
+				color: "hsl(0,0%,0%)",
+				label: "Black"
+			},
+			{
+				color: "hsl(0,0%,30%)",
+				label: "Dim Grey"
+			},
+			{
+				color: "hsl(0,0%,60%)",
+				label: "Grey"
+			},
+			{
+				color: "hsl(0,0%,90%)",
+				label: "Light Grey"
+			},
+			{
+				color: "hsl(0,0%,100%)",
+				label: "White",
+				hasBorder: true
+			},
+			{
+				color: "hsl(0,75%,60%)",
+				label: "Red"
+			},
+			{
+				color: "hsl(30,75%,60%)",
+				label: "Orange"
+			},
+			{
+				color: "hsl(60,75%,60%)",
+				label: "Yellow"
+			},
+			{
+				color: "hsl(90,75%,60%)",
+				label: "Light Green"
+			},
+			{
+				color: "hsl(120,75%,60%)",
+				label: "Green"
+			},
+			{
+				color: "hsl(150,75%,60%)",
+				label: "Aquamarine"
+			},
+			{
+				color: "hsl(180,75%,60%)",
+				label: "Turquoise"
+			},
+			{
+				color: "hsl(210,75%,60%)",
+				label: "Light Blue"
+			},
+			{
+				color: "hsl(240,75%,60%)",
+				label: "Blue"
+			},
+			{
+				color: "hsl(270,75%,60%)",
+				label: "Purple"
+			},
+			{
+				color: "hsl(300,75%,60%)",
+				label: "Pink"
+			}
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
